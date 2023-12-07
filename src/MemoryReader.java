@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MemoryReader {
     final private String filePath;
@@ -12,7 +13,7 @@ public class MemoryReader {
         List<String> fileContents;
 
         try (FileReader fileReader = new FileReader(filePath); BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            fileContents = bufferedReader.lines().toList();
+            fileContents = bufferedReader.lines().collect(Collectors.toList());
         }
 
         return fileContents;
